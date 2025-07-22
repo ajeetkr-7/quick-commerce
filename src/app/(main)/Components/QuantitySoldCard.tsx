@@ -59,8 +59,8 @@ function QuantitySoldCard({ data, className }: QuantitySoldCardProps) {
                 </Button>
             </CardHeader>
             <Separator className='p-0 m-0' />
-            <CardContent className="pt-0 px-0 sm:pt-6">
-                <div className='flex items-center justify-between gap-2 px-4'>
+            <CardContent className="pt-0 px-0">
+                <div className='flex items-center justify-between gap-2 px-4 py-2'>
                     <h1 className='text-2xl font-semibold'>
                         {data.value}
                     </h1>
