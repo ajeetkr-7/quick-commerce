@@ -2,7 +2,7 @@ import React from 'react'
 import SalesCard from './SalesCard';
 import QuantitySoldCard from './QuantitySoldCard';
 import TopCitiesCard from './TopCititesCard';
-import AnalysisData from './AnalysisData';
+import SKUDataTable from './SkuTable';
 
 const dashboardData = {
     sales: {
@@ -76,13 +76,15 @@ const dashboardData = {
 function CommerceDashboard() {
 
     return (
-        <div className=' p-4 bg-gray-100'>
+        <div className='flex flex-col p-6 bg-gray-100 gap-10'>
             <div className="flex w-full gap-4">
                 <SalesCard data={dashboardData.sales} />
                 <QuantitySoldCard data={dashboardData.totalQuantitySold} />
                 <TopCitiesCard data={dashboardData.topCities} />
             </div>
-            <AnalysisData  />
+            <SKUDataTable title="Sku Level Data" subtitle="Analytics for all your SKUs"  />
+            <SKUDataTable  title="City Level Data" subtitle="Analytics for all your cities"/>
+
         </div>
     )
 }
