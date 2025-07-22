@@ -143,8 +143,9 @@ function QuantitySoldCard({ data, className }: QuantitySoldCardProps) {
                         <Area
                             dataKey="lastMonth"
                             type="natural"
-                            fill="url(#fillDesktop)"
+                            fill="url(#fillDeskto)"
                             stroke="var(--color-lastMonth)"
+                            strokeDasharray={"3 3"}
                             stackId="a"
                         />
                         <ChartLegend content={<ChartLegendContent />} />

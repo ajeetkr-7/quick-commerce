@@ -92,7 +92,7 @@ function SalesCard({ data, className }: SalesCardProps) {
                                 <stop
                                     offset="95%"
                                     stopColor="var(--color-lastMonth)"
-                                    stopOpacity={0.0}
+                                    stopOpacity={0.1}
                                 />
                             </linearGradient>
                             <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
@@ -144,7 +144,9 @@ function SalesCard({ data, className }: SalesCardProps) {
                         <Area
                             dataKey="lastMonth"
                             type="natural"
+                            fill="url(#fillDeskto)"
                             stroke="var(--color-lastMonth)"
+                            strokeDasharray={"3 3"}
                             stackId="a"
                         />
                         <ChartLegend content={<ChartLegendContent />} />
