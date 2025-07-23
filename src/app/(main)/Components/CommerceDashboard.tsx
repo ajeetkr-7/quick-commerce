@@ -76,13 +76,15 @@ const dashboardData = {
 function CommerceDashboard() {
 
     return (
-        <div className='flex flex-col p-6 bg-gray-100 gap-10'>
+        <div className='flex flex-col p-6 bg-gray-100 gap-12'>
             <div className="flex w-full gap-4">
                 <SalesCard data={dashboardData.sales} />
-                <QuantitySoldCard data={dashboardData.totalQuantitySold} />
+                <SalesCard data={dashboardData.sales} />
+
+                {/* <QuantitySoldCard data={dashboardData.totalQuantitySold} /> */}
                 <TopCitiesCard data={dashboardData.topCities} />
             </div>
-            <SKUDataTable title="Sku Level Data" subtitle="Analytics for all your SKUs"  />
+            <SKUDataTable title="SKU Level Data" subtitle="Analytics for all your SKUs"  />
             <SKUDataTable  title="City Level Data" subtitle="Analytics for all your cities"/>
 
         </div>

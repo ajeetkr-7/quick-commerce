@@ -185,17 +185,17 @@ export default function SKUDataTable({ title, subtitle }: { title: string, subti
 
     return (
         <div className='w-full flex flex-col gap-4 rounded-lg'>
-            <div className='flex justify-between items-center'>
-                <div className='flex flex-col items-start gap-1'>
-                    <h1 className='text-xl font-semibold'>{title}</h1>
-                    <p className='text-sm text-gray-500'>{subtitle}</p>
+            <div className='flex justify-between items-center px-0.5'>
+                <div className='flex flex-col items-start gap-1 '>
+                    <h1 className='text-2xl font-semibold'>{title}</h1>
+                    <p className='text-base text-gray-500'>{subtitle}</p>
                 </div>
-                <Button>
-                    <span>{`Filters(${1})`}</span>
+                <Button className="py-5.5 px-4 bg-green-900 rounded-lg">
+                    <span className="text-base">{`Filters(${1})`}</span>
                     <ChevronDown className='h-4 w-4 ml-1' />
                 </Button>
             </div>
-            <div className="rounded-lg border mt-4 bg-white">
+            <div className="rounded-lg border mt-3 bg-white">
                 <Table>
                     <TableHeader>
                         {table.getHeaderGroups().map(headerGroup => (

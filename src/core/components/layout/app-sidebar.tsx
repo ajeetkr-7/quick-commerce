@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ArchiveX, AudioWaveform, BookOpen, Bot, ChevronRight, Command, File, GalleryVerticalEnd, Home, Inbox, Plus, Send, Settings2, SquareTerminal, Trash2, Tv } from "lucide-react"
+import { ArchiveX, AudioWaveform, BookOpen, Bot, ChevronRight, CircleQuestionMark, Command, File, GalleryVerticalEnd, Home, Inbox, Plus, Send, Settings, Settings2, SquareTerminal, Trash2, Tv } from "lucide-react"
 
 import { NavUser } from "@/core/components/layout/nav-user"
 import {
@@ -99,21 +99,34 @@ const data = {
             icon: BookOpen,
         }
     ],
+    bottomNav: [
+        {
+            title: "Help",
+            url: "#",
+            icon: CircleQuestionMark,
+        },
+        {
+            title: "Settings",
+            url: "#",
+            icon: Settings,
+        },
+    ],
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     // Note: I'm using state to show active item.
     // IRL you should use the url/router.
+    const { open } = useSidebar()
     return (
         <Sidebar collapsible="icon" {...props} className="border-none" >
             <SidebarHeader className="pt-5">
-                <div className="flex justify-center items-center gap-8">
-                    <TeamSwitcher teams={data.teams} />
+                <div className={`h-12 flex justify-center items-center ${open ? 'gap-4' : 'gap-8'}`}>
+                    {open && <TeamSwitcher teams={data.teams} />}
                     <SidebarTrigger />
                 </div>
             </SidebarHeader>
-            <SidebarContent className="px-2 bg-gray-100 rounded-sm">
-                <SidebarGroup className="px-0 py-5">
+            <SidebarContent className="px-2 bg-gray-100 rounded-sm mt-4">
+                <SidebarGroup className="px-2 py-4">
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {data.midNav.map((item) => (
@@ -126,8 +139,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                     <SidebarMenuItem>
                                         <CollapsibleTrigger asChild>
                                             <SidebarMenuButton tooltip={item.title} size={"md"}>
-                                                {item.icon && <item.icon size={12} />}
-                                                <span>{item.title}</span>
+                                                {item.icon && <item.icon size={14} />}
+                                                <span className="text-base">{item.title}</span>
                                                 {item.items && <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />}
                                             </SidebarMenuButton>
                                         </CollapsibleTrigger>
@@ -151,10 +164,22 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
+
+                <SidebarGroup className="px-2 py-5 mt-auto">
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            {data.bottomNav.map((item, index) => (
+                                <SidebarMenuItem key={index}>
+                                    <SidebarMenuButton tooltip={item.title} size={"md"}>
+                                        {item.icon && <item.icon size={12} />}
+                                        <span className="text-base">{item.title}</span>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
             </SidebarContent>
-            <SidebarFooter>
-                <NavUser user={data.user} />
-            </SidebarFooter>
         </Sidebar>
     )
 }

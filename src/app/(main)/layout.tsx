@@ -26,7 +26,7 @@ export default function RootLayout({
             defaultOpen={true}
             style={
               {
-                "--sidebar-width-icon": "3.8rem",
+                "--sidebar-width-icon": "4rem",
               } as React.CSSProperties
             }
           >

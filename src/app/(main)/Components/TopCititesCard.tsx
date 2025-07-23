@@ -69,8 +69,8 @@ export default function TopCitiesCard({ data, className }: TopCitiesCardProps) {
                 </Button>
             </CardHeader>
             <Separator className='p-0 m-0' />
-            <CardContent className="flex-1 pb-0">
-                <div className="relative w-full max-w-[300px] mx-auto overflow-hidden" style={{ height: '150px' }}>
+            <CardContent className="flex-1 pb-0 pt-1">
+                <div className="relative w-full max-w-[280px] mx-auto overflow-hidden" style={{ height: '140px' }}>
                     <ChartContainer
                         config={chartConfig}
                         className="aspect-square w-full"
@@ -84,7 +84,7 @@ export default function TopCitiesCard({ data, className }: TopCitiesCardProps) {
                                 data={chartData}
                                 dataKey="visitors"
                                 nameKey="browser"
-                                innerRadius={92}
+                                innerRadius={90}
                                 startAngle={180}
                                 endAngle={0}
                             >
@@ -93,7 +93,7 @@ export default function TopCitiesCard({ data, className }: TopCitiesCardProps) {
                         </PieChart>
                     </ChartContainer>
                 </div>
-                <div className='flex flex-col pt-6 gap-2'>
+                <div className='flex flex-col pt-4 gap-1.5'>
                     {data.cities.map((city, index) => (
                         <div className='flex items-center justify-between' key={index}>
                             <div className='flex items-center gap-2'>

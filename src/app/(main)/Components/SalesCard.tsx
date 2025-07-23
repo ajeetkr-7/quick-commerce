@@ -50,36 +50,36 @@ const chartConfig = {
 
 function SalesCard({ data, className }: SalesCardProps) {
     return (
-        <Card className="pt-0 gap-0 flex-1 max-w-1/3">
-            <CardHeader className="flex items-center gap-2 space-y-0 py-2 sm:flex-row">
-                <div className="grid flex-1 gap-1">
-                    <CardTitle>{data.title}</CardTitle>
+        <Card className="py-0 gap-0 flex-1 max-w-1/3 sm:p-0 md:p-0">
+            <CardHeader className="flex items-center gap-2 space-y-0 py-2 sm:flex-row px-5">
+                <div className="grid flex-1 gap-1 px-0">
+                    <h1>{data.title}</h1>
                 </div>
                 <Button asChild variant={"ghost"} size="icon">
-                    <CircleQuestionMark className='h-8 w-8 p-2' />
+                    <CircleQuestionMark size={8} className='pl-4' />
                 </Button>
             </CardHeader>
-            <Separator className='p-0 m-0'/>
-            <CardContent className="pt-0 px-0">
-                <div className='flex items-center justify-between gap-2 px-4 py-2'>
-                    <h1 className='text-2xl font-semibold'>
+            <Separator className='p-0 m-0' />
+            <CardContent className="p-0 m-0">
+                <div className='flex items-center justify-between gap-2 px-4.5 py-2'>
+                    <h1 className='text-3xl font-semibold'>
                         {data.value}
                     </h1>
                     <div className='flex flex-col items-end justify-center gap-1'>
                         <div className='flex items-center gap-1 text-green-600'>
-                            <ArrowUpIcon size={18}/>
-                            <span>
+                            <ArrowUpIcon size={18} />
+                            <span className='font-semibold text-base'>
                                 {data.change}%
                             </span>
                         </div>
-                        <span className='text-gray-600'>
+                        <span className='text-gray-500'>
                             {`vs ${data.lastMonthValue} last month`}
                         </span>
                     </div>
                 </div>
                 <ChartContainer
                     config={chartConfig}
-                    className="aspect-auto h-[250px] w-full pr-2 pt-2"
+                    className="h-[200px] w-full pr-2 pt-2"
                 >
                     <AreaChart data={data.trend} className='px-0'>
                         <defs>
@@ -149,9 +149,20 @@ function SalesCard({ data, className }: SalesCardProps) {
                             strokeDasharray={"3 3"}
                             stackId="a"
                         />
-                        <ChartLegend content={<ChartLegendContent />} />
+                        {/* <ChartLegend content={<ChartLegendContent />} /> */}
                     </AreaChart>
                 </ChartContainer>
+                <Separator className='p-0 m-0' />
+                <div className='flex items-center p-3 m-0'>
+                    <div className='flex items-center gap-1.5 px-2'>
+                        <div className='h-1.5 w-1.5 rounded-full flex bg-green-600/60'/>
+                        <p className='text-gray-500 font-light' >{"This month"}</p>
+                    </div>
+                    <div className='flex items-center gap-1.5 px-2'>
+                        <div className='h-1.5 w-1.5 rounded-full flex bg-red-600/60'/>
+                        <p className='text-gray-500 font-light'>{"Last month"}</p>
+                    </div>
+                </div>
             </CardContent>
         </Card>
     )

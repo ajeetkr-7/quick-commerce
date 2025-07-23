@@ -3,12 +3,12 @@ import React from 'react'
 
 function CommerceTabs() {
     return (
-        <div className='flex justify-between h-16 shrink-0 items-center gap-2 border-b px-4'>
+        <div className='flex justify-betwee shrink-0 items-center gap-2 border-b px-4 py-4'>
             <Tabs defaultValue="Blinkit" >
-                <TabsList className='h-10 border bg-transparent'>
-                    <TabsTrigger value="Blinkit" className='py-2'>Blinkit</TabsTrigger>
-                    <TabsTrigger value="Zepto">Zepto</TabsTrigger>
-                    <TabsTrigger value="Instamart">Instamart</TabsTrigger>
+                <TabsList className='h-11 border bg-transparent rounded-xl'>
+                    <TabsTrigger value="Blinkit" className='px-4 rounded-lg'>Blinkit</TabsTrigger>
+                    <TabsTrigger value="Zepto" className='px-4'>Zepto</TabsTrigger>
+                    <TabsTrigger value="Instamart" className='px-4'>Instamart</TabsTrigger>
                 </TabsList>
             </Tabs>
         </div>

@@ -29,7 +29,7 @@ const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
 const SIDEBAR_WIDTH = "16rem"
 const SIDEBAR_WIDTH_MOBILE = "18rem"
-const SIDEBAR_WIDTH_ICON = "3.6rem"
+const SIDEBAR_WIDTH_ICON = "3.8rem"
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
 type SidebarContextProps = {
@@ -83,12 +83,14 @@ function SidebarProvider({
       } else {
         _setOpen(openState)
       }
-
-      // This sets the cookie to keep the sidebar state.
-      document.cookie = `${name}:state=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
     },
     [setOpenProp, open, name]
   )
+
+  // Set cookie only after mount and when open changes
+  React.useEffect(() => {
+    document.cookie = `${name}:state=${open}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+  }, [open, name])
 
   // Helper to toggle the sidebar.
   const toggleSidebar = React.useCallback(() => {
@@ -275,7 +277,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      {open ?  <ChevronsLeft /> : <ChevronsRight />}
+      {open ? <ChevronsLeft /> : <ChevronsRight />}
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )
@@ -487,7 +489,7 @@ const sidebarMenuButtonVariants = cva(
       size: {
         default: "h-8 text-sm",
         sm: "h-7 text-xs",
-        md: "h-9 text-sm",
+        md: "h-11 text-sm",
         lg: "h-12 text-sm group-data-[collapsible=icon]:p-0!",
       },
     },

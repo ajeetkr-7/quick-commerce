@@ -28,7 +28,7 @@ export function TeamSwitcher({
     plan: string
   }[]
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile, open } = useSidebar()
   const [activeTeam, setActiveTeam] = React.useState(teams[0])
 
   if (!activeTeam) {
@@ -42,13 +42,13 @@ export function TeamSwitcher({
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="md"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground border shadow-none rounded-lg"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground border shadow-none rounded-lg gap-2"
             >
               <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-6 items-center justify-center rounded-sm">
                 <activeTeam.logo className="size-4" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{activeTeam.name}</span>
+                <span className="truncate font-medium text-base">{activeTeam.name}</span>
               </div>
               <ChevronsUpDown className="ml-auto " />
             </SidebarMenuButton>
