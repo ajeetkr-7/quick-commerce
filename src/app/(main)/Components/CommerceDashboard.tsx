@@ -85,7 +85,6 @@ function CommerceDashboard() {
             </div>
             <SKUDataTable title="SKU Level Data" subtitle="Analytics for all your SKUs"  />
             <SKUDataTable  title="City Level Data" subtitle="Analytics for all your cities"/>
-
         </div>
     )
 }

@@ -8,7 +8,6 @@ export default function Home() {
     <div className="flex flex-col flex-1 mx-4 mt-6 rounded-2xl border border-gray-100 ">
       <Header/>
       <CommerceTabs />
-      <CommerceDashboard />
     </div>
   );
 }
