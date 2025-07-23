@@ -55,13 +55,13 @@ const data = {
     ],
     navMain: [
         {
-            title: "Inbox",
+            title: "Mama Earth",
             url: "#",
             src: "/assets/images/mama_earth.png",
             isActive: true,
         },
         {
-            title: "Drafts",
+            title: "Boat",
             url: "#",
             src: "/assets/images/boat.png",
             isActive: false,
@@ -90,8 +90,10 @@ const data = {
                 {
                     title: "Quick Commerce",
                     url: "#",
+                    isActive: true,
                 },
             ],
+            isActive: true,
         },
         {
             title: "Creatives",
@@ -114,8 +116,6 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    // Note: I'm using state to show active item.
-    // IRL you should use the url/router.
     const { open } = useSidebar()
     return (
         <Sidebar collapsible="icon" {...props} className="border-none" >
@@ -128,7 +128,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarContent className="px-2 bg-gray-100 rounded-sm mt-4">
                 <SidebarGroup className="px-2 py-4">
                     <SidebarGroupContent>
-                        <SidebarMenu>
+                        <SidebarMenu className="gap-2">
                             {data.midNav.map((item) => (
                                 <Collapsible
                                     key={item.title}
@@ -137,18 +137,25 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                     className="group/collapsible"
                                 >
                                     <SidebarMenuItem>
-                                        <CollapsibleTrigger asChild>
-                                            <SidebarMenuButton tooltip={item.title} size={"md"}>
+                                        {!item.items && (
+                                            <SidebarMenuButton tooltip={item.title} size={"default"} className="cursor-pointer hover:bg-[#DFEAE8]">
                                                 {item.icon && <item.icon size={14} />}
                                                 <span className="text-base">{item.title}</span>
                                                 {item.items && <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />}
                                             </SidebarMenuButton>
-                                        </CollapsibleTrigger>
+                                        )}
+                                        {item.items && <CollapsibleTrigger asChild>
+                                            <SidebarMenuButton tooltip={item.title} size={"default"} className="cursor-pointer hover:bg-[#DFEAE8]">
+                                                {item.icon && <item.icon size={14} />}
+                                                <span className="text-base">{item.title}</span>
+                                                {item.items && <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />}
+                                            </SidebarMenuButton>
+                                        </CollapsibleTrigger>}
                                         {item.items && <CollapsibleContent className="pl-4">
                                             <SidebarMenuSub>
                                                 {item.items?.map((subItem) => (
                                                     <SidebarMenuSubItem key={subItem.title} className="pt-1">
-                                                        <SidebarMenuSubButton asChild>
+                                                        <SidebarMenuSubButton className={`cursor-pointer hover:bg-[#DFEAE8] ${subItem.isActive && 'bg-[#DFEAE8] text-[#027056]'} `} asChild>
                                                             <a href={subItem.url} className="p-2">
                                                                 <span>{subItem.title}</span>
                                                             </a>
