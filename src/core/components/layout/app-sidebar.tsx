@@ -165,7 +165,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     </SidebarGroupContent>
                 </SidebarGroup>
 
-                <SidebarGroup className="px-2 py-5 mt-auto">
+                <SidebarGroup className="px-2 py-3 mt-auto">
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {data.bottomNav.map((item, index) => (

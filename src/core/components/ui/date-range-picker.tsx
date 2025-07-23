@@ -17,6 +17,7 @@ import {
 import { Switch } from './switch'
 import { ChevronUpIcon, ChevronDownIcon, CheckIcon, CalendarDays } from 'lucide-react'
 import { cn } from '@/core/lib/utils'
+import { useSidebar } from './sidebar'
 
 export interface DateRangePickerProps {
     /** Click handler for applying the updates from DateRangePicker. */
@@ -340,7 +341,7 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
                 <PopoverTrigger asChild>
                     <Button size={'lg'} variant="outline">
                         <CalendarDays />
-                        <div className="text-right">
+                        {(<div className="hidden text-right sm:block">
                             <div className="py-1">
                                 <div>{`${formatDate(range.from, locale)}${range.to != null ? ' - ' + formatDate(range.to, locale) : ''
                                     }`}</div>
@@ -355,7 +356,7 @@ export const DateRangePicker: FC<DateRangePickerProps> & {
                                     </>
                                 </div>
                             )}
-                        </div>
+                        </div>)}
                         <div className="pl-1 opacity-60 -mr-2 scale-125">
                             {isOpen ? (<ChevronUpIcon width={24} />) : (<ChevronDownIcon width={24} />)}
                         </div>

@@ -1,6 +1,5 @@
 import React from 'react'
 import SalesCard from './SalesCard';
-import QuantitySoldCard from './QuantitySoldCard';
 import TopCitiesCard from './TopCititesCard';
 import SKUDataTable from './SkuTable';
 
@@ -49,7 +48,7 @@ const dashboardData = {
                 name: "New Delhi",
                 value: "₹26.5L",
                 percentage: 35,
-                change: 1.2
+                change: 1.2,
             },
             {
                 name: "Mumbai",
@@ -77,7 +76,7 @@ function CommerceDashboard() {
 
     return (
         <div className='flex flex-col p-6 bg-gray-100 gap-12'>
-            <div className="flex w-full gap-4">
+            <div className="flex flex-col w-full gap-4 sm:flex-row">
                 <SalesCard data={dashboardData.sales} />
                 <SalesCard data={dashboardData.totalQuantitySold} />
 

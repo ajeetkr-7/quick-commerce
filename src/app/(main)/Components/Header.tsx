@@ -18,8 +18,8 @@ function Header() {
                 </div>
                 <DateRangePicker
                     onUpdate={(values) => console.log(values)}
-                    initialDateFrom="2023-01-01"
-                    initialDateTo="2023-12-31"
+                    initialDateFrom="2025-06-01"
+                    initialDateTo="2025-07-31"
                     align="start"
                     locale="en-GB"
                     showCompare={false}

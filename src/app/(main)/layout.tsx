@@ -33,6 +33,7 @@ export default function RootLayout({
             <AppSidebar />
           </SidebarProvider>
           <main className="flex-1 h-full overflow-auto">{children}</main>
+
         </div>
       </body>
     </html>

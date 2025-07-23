@@ -22,54 +22,36 @@ export interface TopCitiesCardProps {
     className?: string;
 }
 
-const chartData = [
-    { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-    { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-    { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
-    { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-    { browser: "other", visitors: 90, fill: "var(--color-other)" },
-]
-
-const chartConfig = {
-    visitors: {
-        label: "Visitors",
-    },
-    chrome: {
-        label: "Chrome",
-        color: "var(--chart-1)",
-    },
-    safari: {
-        label: "Safari",
-        color: "var(--chart-2)",
-    },
-    firefox: {
-        label: "Firefox",
-        color: "var(--chart-3)",
-    },
-    edge: {
-        label: "Edge",
-        color: "var(--chart-4)",
-    },
-    other: {
-        label: "Other",
-        color: "var(--chart-5)",
-    },
-} satisfies ChartConfig
-
 
 export default function TopCitiesCard({ data, className }: TopCitiesCardProps) {
+    // Generate chartData from data.cities
+    const chartData = data.cities.map((city, idx) => ({
+        name: city.name,
+        value: parseFloat(city.value.replace(/[^\d.]/g, '')) || 0,
+        percentage: city.percentage,
+        fill: `var(--chart-${(idx % 5) + 1})`,
+    }));
+
+    const chartConfig = data.cities.reduce((acc, city, idx) => {
+        acc[`city${idx + 1}`] = {
+            label: city.name,
+            color: `var(--chart-${(idx % 5) + 1})`,
+        };
+        return acc;
+    }, {} as ChartConfig);
+
     return (
-        <Card className="pt-0 gap-0 flex-1 max-w-1/3">
-            <CardHeader className="flex items-center gap-2 space-y-0 py-2 sm:flex-row">
-                <div className="grid flex-1 gap-1">
-                    <CardTitle>{"Top Cities"}</CardTitle>
+        <Card className="pt-0 gap-0 flex-1 sm:max-w-1/3">
+            <CardHeader className="flex items-center gap-2 space-y-0 py-4 sm:flex-row px-5">
+                <div className="grid flex-1 gap-1 px-0">
+                    <h1>{"Top Cities"}</h1>
                 </div>
                 <Button asChild variant={"ghost"} size="icon">
-                    <CircleQuestionMark className='h-8 w-8 p-2' />
+                    <CircleQuestionMark className='h-4 w-4' />
                 </Button>
             </CardHeader>
             <Separator className='p-0 m-0' />
-            <CardContent className="flex-1 pb-0 pt-1">
+            <CardContent className="flex-1 pb-0 pt-0">
                 <div className="relative w-full max-w-[280px] mx-auto overflow-hidden" style={{ height: '140px' }}>
                     <ChartContainer
                         config={chartConfig}
@@ -82,8 +64,8 @@ export default function TopCitiesCard({ data, className }: TopCitiesCardProps) {
                             />
                             <Pie
                                 data={chartData}
-                                dataKey="visitors"
-                                nameKey="browser"
+                                dataKey="value"
+                                nameKey="name"
                                 innerRadius={90}
                                 startAngle={180}
                                 endAngle={0}
@@ -92,12 +74,18 @@ export default function TopCitiesCard({ data, className }: TopCitiesCardProps) {
                             </Pie>
                         </PieChart>
                     </ChartContainer>
+                    {/* Total value and change overlay */}
+                    <div className="absolute left-1/2 bottom-0 -translate-x-1/2 flex flex-col items-cente rounded-md px-3 py-0 text-center">
+                        <h1>Total</h1>
+                        <h2 className="text-xl font-bold">{data.total.value}</h2>
+                        <span className="text-sm text-green-700">{data.total.change > 0 ? '+' : ''}{data.total.change}%</span>
+                    </div>
                 </div>
-                <div className='flex flex-col pt-4 gap-1.5'>
+                <div className='flex flex-col pt-6 gap-1.5'>
                     {data.cities.map((city, index) => (
                         <div className='flex items-center justify-between' key={index}>
                             <div className='flex items-center gap-2'>
-                                <div className='w-2 h-2 bg-primary rounded-full' />
+                                <div className={`w-2 h-2 ${'bg-chart-' + (index + 1)} rounded-full`} />
                                 <span>{city.name}</span>
                             </div>
                             <div className='flex items-center justify-center gap-2'>
