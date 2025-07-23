@@ -5,9 +5,9 @@ import { Separator } from '@/core/components/ui/separator'
 
 function CommerceTabs() {
     const tabData = [
-        { value: "Blinkit", label: "Blinkit", icon: "/assets/images/blinkit.png" },
-        { value: "Zepto", label: "Zepto", icon: "/assets/images/zepto.png" },
-        { value: "Instamart", label: "Instamart", icon: "/assets/images/instamart.png" },
+        { value: "Blinkit", label: "Blinkit", icon: "/images/blinkit.png" },
+        { value: "Zepto", label: "Zepto", icon: "/images/zepto.png" },
+        { value: "Instamart", label: "Instamart", icon: "/images/instamart.png" },
     ]
 
     return (

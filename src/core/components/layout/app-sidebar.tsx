@@ -57,13 +57,13 @@ const data = {
         {
             title: "Mama Earth",
             url: "#",
-            src: "/assets/images/mama_earth.png",
+            src: "/images/mama_earth.png",
             isActive: true,
         },
         {
             title: "Boat",
             url: "#",
-            src: "/assets/images/boat.png",
+            src: "/images/boat.png",
             isActive: false,
         }
     ],

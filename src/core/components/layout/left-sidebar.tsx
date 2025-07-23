@@ -23,13 +23,13 @@ const data = {
     {
       title: "Mama Earth",
       url: "#",
-      src: "/assets/images/mama_earth.png",
+      src: "/images/mama_earth.png",
       isActive: true,
     },
     {
       title: "Boat",
       url: "#",
-      src: "/assets/images/boat.png",
+      src: "/images/boat.png",
       isActive: false,
     }
   ]
@@ -43,7 +43,7 @@ function LeftSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <a href="#" >
               <div className="flex aspect-square items-center justify-center rounded-xl overflow-clip border-2 border-green-700">
-                <Image src={"/assets/images/perfora.png"} alt="Perfora" width={40} height={40} className="p-0 m-0" />
+                <Image src={"/images/perfora.png"} alt="Perfora" width={40} height={40} className="p-0 m-0" />
               </div>
             </a>
           </SidebarMenuItem>
