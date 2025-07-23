@@ -1,19 +1,16 @@
 "use client"
 
 import React from 'react'
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import { Area, AreaChart, CartesianGrid, Line, XAxis, YAxis } from "recharts"
 
 import {
     Card,
     CardContent,
     CardHeader,
-    CardTitle,
 } from "@/core/components/ui/card"
 import {
     ChartConfig,
     ChartContainer,
-    ChartLegend,
-    ChartLegendContent,
     ChartTooltip,
     ChartTooltipContent,
 } from "@/core/components/ui/chart"
@@ -40,11 +37,11 @@ export interface SalesCardProps {
 const chartConfig = {
     thisMonth: {
         label: "This Month",
-        color: "var(--chart-1)",
+        color: "var(--chart-2)",
     },
     lastMonth: {
         label: "Last Month",
-        color: "var(--chart-2)",
+        color: "var(--chart-1)",
     },
 } satisfies ChartConfig
 
@@ -79,7 +76,7 @@ function SalesCard({ data, className }: SalesCardProps) {
                 </div>
                 <ChartContainer
                     config={chartConfig}
-                    className="h-[200px] w-full pr-2 pt-2"
+                    className=" h-[200px] w-full pr-2 pt-2 pl-0"
                 >
                     <AreaChart data={data.trend} className='px-0'>
                         <defs>
@@ -87,7 +84,7 @@ function SalesCard({ data, className }: SalesCardProps) {
                                 <stop
                                     offset="5%"
                                     stopColor="var(--color-lastMonth)"
-                                    stopOpacity={0.8}
+                                    stopOpacity={0.4}
                                 />
                                 <stop
                                     offset="95%"
@@ -99,7 +96,7 @@ function SalesCard({ data, className }: SalesCardProps) {
                                 <stop
                                     offset="5%"
                                     stopColor="var(--color-thisMonth)"
-                                    stopOpacity={0.8}
+                                    stopOpacity={0.3}
                                 />
                                 <stop
                                     offset="95%"
@@ -113,15 +110,14 @@ function SalesCard({ data, className }: SalesCardProps) {
                             dataKey="date"
                             tickLine={false}
                             axisLine={false}
-                            tickMargin={1}
-                            minTickGap={2}
+                            fontSize={14}
                         />
                         <YAxis
                             dataKey="thisMonth"
                             tickLine={false}
                             axisLine={false}
-                            tickMargin={2}
-                            minTickGap={4}
+                            width={40}
+                            fontSize={14}
                         />
                         <ChartTooltip
                             cursor={false}
@@ -135,31 +131,38 @@ function SalesCard({ data, className }: SalesCardProps) {
                             }
                         />
                         <Area
+                            dataKey="lastMonth"
+                            type="natural"
+                            fill="url(#fillDeskto)"
+                            stroke="var(--color-lastMonth)"
+                            strokeDasharray={"3 3"}
+                            stackId="b"
+                        />
+                        <Area
                             dataKey="thisMonth"
                             type="natural"
                             fill="url(#fillMobile)"
                             stroke="var(--color-thisMonth)"
                             stackId="a"
                         />
-                        <Area
-                            dataKey="lastMonth"
+                        {/* <Area
+                            dataKey={"lastMonth"}
                             type="natural"
-                            fill="url(#fillDeskto)"
-                            stroke="var(--color-lastMonth)"
-                            strokeDasharray={"3 3"}
-                            stackId="a"
-                        />
+                            stroke={`var(--color-lastMonth)`}
+                            strokeWidth={2}
+                           stackId={"b"}
+                        /> */}
                         {/* <ChartLegend content={<ChartLegendContent />} /> */}
                     </AreaChart>
                 </ChartContainer>
                 <Separator className='p-0 m-0' />
                 <div className='flex items-center p-3 m-0'>
                     <div className='flex items-center gap-1.5 px-2'>
-                        <div className='h-1.5 w-1.5 rounded-full flex bg-green-600/60'/>
+                        <div className='h-1.5 w-1.5 rounded-full flex bg-green-600/60' />
                         <p className='text-gray-500 font-light' >{"This month"}</p>
                     </div>
                     <div className='flex items-center gap-1.5 px-2'>
-                        <div className='h-1.5 w-1.5 rounded-full flex bg-red-600/60'/>
+                        <div className='h-1.5 w-1.5 rounded-full flex bg-red-600/60' />
                         <p className='text-gray-500 font-light'>{"Last month"}</p>
                     </div>
                 </div>

@@ -79,7 +79,7 @@ function CommerceDashboard() {
         <div className='flex flex-col p-6 bg-gray-100 gap-12'>
             <div className="flex w-full gap-4">
                 <SalesCard data={dashboardData.sales} />
-                <SalesCard data={dashboardData.sales} />
+                <SalesCard data={dashboardData.totalQuantitySold} />
 
                 {/* <QuantitySoldCard data={dashboardData.totalQuantitySold} /> */}
                 <TopCitiesCard data={dashboardData.topCities} />
