@@ -87,9 +87,9 @@ function SalesCard({ data, className }: SalesCardProps) {
                                     stopOpacity={0.3}
                                 />
                                 <stop
-                                    offset="95%"
+                                    offset="80%"
                                     stopColor="var(--color-thisMonth)"
-                                    stopOpacity={0.1}
+                                    stopOpacity={0.05}
                                 />
                             </linearGradient>
                         </defs>

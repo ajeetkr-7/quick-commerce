@@ -3,7 +3,7 @@ import { Button } from '@/core/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/core/components/ui/card';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/core/components/ui/chart';
 import { Separator } from '@/core/components/ui/separator';
-import { ArrowUp, CircleQuestionMark } from 'lucide-react';
+import { ArrowDown, ArrowUp, CircleQuestionMark } from 'lucide-react';
 import { Label, Pie, PieChart } from 'recharts';
 
 export interface TopCitiesCardProps {
@@ -86,15 +86,19 @@ export default function TopCitiesCard({ data, className }: TopCitiesCardProps) {
                     {data.cities.map((city, index) => (
                         <div className='flex items-center justify-between' key={index}>
                             <div className='flex items-center gap-2'>
-                                <div className={`w-2 h-2 ${'bg-chart-' + (index + 1)} rounded-full`} />
+                                <div className={`w-2 h-2 rounded-full`} style={{
+                                    backgroundColor: `var(--chart-${(index % 5) + 1})`
+                                }}/>
                                 <span>{city.name}</span>
                             </div>
                             <div className='flex items-center justify-center gap-2'>
                                 <div>{city.value}</div>
                                 <div className=' px-1.5 py-0.5 rounded-sm bg-muted'>{city.percentage}{"%"}</div>
                                 <div className='flex items-center gap-0.5'>
-                                    <ArrowUp size={16} />
-                                    <span>{Math.abs(city.change)}</span>
+                                    {city.change > 0 
+                                    ? <ArrowUp size={16} className='text-green-600' /> 
+                                    : <ArrowDown size={16} className='text-red-600' />}
+                                    <span className={`${city.change > 0 ? 'text-green-600' : 'text-red-600'}`}>{Math.abs(city.change)+"%"}</span>
                                 </div>
                             </div>
                         </div>
