@@ -172,12 +172,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     </SidebarGroupContent>
                 </SidebarGroup>
 
-                <SidebarGroup className="px-2 py-3 mt-auto">
+                <SidebarGroup className="px-2 py-4 mt-auto">
                     <SidebarGroupContent>
-                        <SidebarMenu>
+                        <SidebarMenu className="gap-4.5">
                             {data.bottomNav.map((item, index) => (
                                 <SidebarMenuItem key={index}>
-                                    <SidebarMenuButton tooltip={item.title} size={"md"}>
+                                    <SidebarMenuButton tooltip={item.title} size={"default"} className="cursor-pointer hover:bg-[#DFEAE8]">
                                         {item.icon && <item.icon size={12} />}
                                         <span className="text-base">{item.title}</span>
                                     </SidebarMenuButton>

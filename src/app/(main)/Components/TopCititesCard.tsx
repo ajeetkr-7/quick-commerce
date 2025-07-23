@@ -67,6 +67,7 @@ export default function TopCitiesCard({ data, className }: TopCitiesCardProps) {
                                 dataKey="value"
                                 nameKey="name"
                                 innerRadius={90}
+                                outerRadius={110}
                                 startAngle={180}
                                 endAngle={0}
                             >

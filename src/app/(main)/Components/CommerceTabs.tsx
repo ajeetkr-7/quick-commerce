@@ -15,7 +15,7 @@ function CommerceTabs() {
             <Tabs defaultValue={tabData[0].value} className=" w-full gap-0">
                 <TabsList className='justify-between h-11 my-4 ml-4'>
                     {tabData.map((tab) => (
-                        <TabsTrigger key={tab.value} value={tab.value} className='flex items-center gap-2 px-2.5 sm:px-3'>
+                        <TabsTrigger key={tab.value} value={tab.value} className='cursor-pointer flex items-center gap-2 px-2.5 sm:px-3'>
                             <img src={tab.icon} alt={tab.label} className='w-5 h-5' />
                             <span className='text-base'>{tab.label}</span>
                         </TabsTrigger>
